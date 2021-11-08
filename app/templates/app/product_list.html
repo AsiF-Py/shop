@@ -1,0 +1,103 @@
+{% extends "account/base.html" %}
+<title>{% block head_title %}Home{% endblock %}</title>
+   {% block extra_head %}
+    {% endblock %}
+    
+{% block content %}
+<style>
+    li{
+        display:inline-block;
+    }
+</style>
+<br>
+<br>
+<!--Section: Block Content-->
+<section>
+
+ 
+    <div class="container">
+    
+            
+            
+       {% for product in product_list %}
+  <div class="row mb-4">
+    <div class="col-md-5 col-lg-3 col-xl-3">
+
+       <div class="view zoom overlay z-depth-1 rounded mb-3 mb-md-0">
+        <img class="img-fluid w-100"
+          src="{{product.image.url}}"
+          alt="Sample"> 
+        
+        <a href="#!">
+          <div class="mask">
+            <img class="img-fluid w-100"
+              src="{{product.image.url}}">
+            <div class="mask rgba-black-slight"></div>
+          </div>
+        </a>
+      </div>
+
+    </div>
+    <div class="col-md-7 col-lg-9 col-xl-9">
+      <div class="row">
+        <div class="col-lg-7 col-xl-7">
+
+          <a href="{{product.get_absolute_url}}"><h5>{{product.title}}</h5></a>
+          <p class="mb-2 text-muted text-uppercase small">{{product.barnd}}</p>
+          <ul class="rating">
+            <li>
+              <i class="fas fa-star fa-sm text-primary"></i>
+            </li>
+            <li>
+              <i class="fas fa-star fa-sm text-primary"></i>
+            </li>
+            <li>
+              <i class="fas fa-star fa-sm text-primary"></i>
+            </li>
+            <li>
+              <i class="fas fa-star fa-sm text-primary"></i>
+            </li>
+            <li>
+              <i class="far fa-star fa-sm text-primary"></i>
+            </li>
+          </ul>
+          <hr>
+          <p class="mb-lg-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam,
+            sapiente illo. Sit error voluptas repellat rerum quidem, soluta enim perferendis
+            voluptates laboriosam. Distinctio, officia quis dolore quos sapiente tempore alias.</p>
+
+        </div>
+        <div class="col-lg-5 col-xl-5">
+
+          <h6 class="mb-3">
+            <span class="text-danger mr-1">{{product.price}}</span>
+            <span class="text-grey"><s>$36.99</s></span>
+          </h6>
+          <div class="my-4">
+          <form action="/add-to-cart">
+          <input type="hidden" name="prod_id" value="{{product.id}}">
+          <input type="submit" class="btn btn-primary btn-md mr-1 mb-2" value="Add to cart">
+            
+           <a href="{{product.get_absolute_url}}"><button type="button" class="btn btn-light btn-md mr-1 mb-2"><i
+                class="fas fa-info-circle pr-2"></i>Details</button></a>
+            </form>
+          </div>
+          <button type="button" class="btn btn-danger btn-md px-3 mb-lg-2 material-tooltip-main"
+            data-toggle="tooltip" data-placement="top" title="Add to wishlist"><i
+              class="far fa-heart"></i></button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+  
+            
+          
+
+</section>
+<!--Section: Block Content-->
+
+
+</div>
+{% endblock %}
